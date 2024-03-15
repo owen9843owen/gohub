@@ -30,3 +30,4 @@ scripts/*
 Capfile
 Gemfile
 Gemfile.lock
+go.sum

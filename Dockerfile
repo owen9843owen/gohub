@@ -1,21 +1,11 @@
-FROM golang:1.4.2-wheezy
+FROM golang:1.21
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        curl \
-    && rm -rf /var/lib/apt/lists/*
+WORKDIR /server
+COPY . /server
 
-RUN curl -s https://get.docker.io/ubuntu/ | sh && \
-    echo 'DOCKER_OPTS="-H :2375 -H unix:///var/run/docker.sock"' >> /etc/default/docker
+RUN go mod tidy
+RUN go build -v -o app
 
-ADD . /go/src/github.com/adjust/gohub
+EXPOSE 8088
 
-WORKDIR /go/src/github.com/adjust/gohub
-
-RUN go install github.com/adjust/gohub
-
-EXPOSE 6578
-
-ENTRYPOINT ["/go/bin/gohub"]
-
-CMD ["--port", "6578", "--log", "/var/log/webhook.log"]
+ENTRYPOINT ./app
