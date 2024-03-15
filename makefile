@@ -5,9 +5,10 @@ run:
 	docker run -it --rm --name gohub \
 	-d \
  	--env branch=owen/swagger \
-    --env path=/Users/owen/Documents/project/github.com/bytedance-soft/wallet-server/ \
-    --env port=8088 \
-    --env repository=https://owen9843owen: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@github.com/bytedance-soft/wallet-server.git \
+    --env repository=https://owen9843owen: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@github.com/bytedance-soft/wallet-server.git \
     --env server=wallet-server \
-    --env commonRepository=https://owen9843owen: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@github.com/bytedance-soft/go-common.git \
+    --env commonRepository=https://owen9843owen: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@github.com/bytedance-soft/go-common.git \
  	ttl.sh/bd/gohub/v1:1h
+
+delete:
+	docker stop gohub && docker rm gohub

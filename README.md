@@ -1,51 +1,13 @@
-gohub
-=====
+### 服务端口
+8000
 
-## What is gohub?
-
-gohub is a little webserver written in go. He waits for webhook calls by github to run little shell commands.
-
-## What is it good for?
-
-Imagine you have your repo spread over several instances. You can use gohub to automate updating all your cloned repos.
-
-## How to use
-
-Just edit the config.json to your needs. A short example:
-You want to track the status of your Repository "repo" and the branch master. If there is an update to this branch you want to execute your shell script "niftyscript.sh".
-
-```json
-{
-    "Hooks":[
-        {
-          "Repo":"repo",
-          "Branch":"master",
-          "Shell":"niftyscript.sh"
-        }
-    ]
-}
+### 环境变量
 ```
-
-Now start the server with
-  
-    go run main.go --port 6578
-
-and add a git-webhook for your.domain.com:6578/repo_master. Everytime you push to master, your script gets executed.
-
-## What about safety?
-
-Git webhooks use only 4 different ips for their webhooks. (207.97.227.253, 50.57.128.197, 108.171.174.178, 50.57.231.61) You can easily restrict access to your gohup server by using either a firewall or an equivalent nginx configuration.
-
-## Using Docker
-
-    docker build -t {you}/gohub .
-    docker run -d --name gohub -p 6578:6578 {you}/gohub
-
-With Docker support (access host docker inside container)
-    
-    docker run -d --name gohub -p 6578:6578 -v /var/run/docker.sock:/var/run/docker.sock {you}/gohub
-
-Mounting volume and changing default params
-
-    docker run -d --name gohub -p 6578:6578 -v /YOUR/APP:/app {you}/gohub --port 6578 --config /app/your_config.json --log /app/gohub.log
-
+# 分支
+branch=owen/swagger
+# 服务器路径
+path=/Users/owen/Documents/project/github.com/bytedance-soft/wallet-server/
+repository=https://owen9843owen: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@github.com/bytedance-soft/wallet-server.git
+server=wallet-server
+commonRepository=https://owen9843owen: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@github.com/bytedance-soft/go-common.git
+```

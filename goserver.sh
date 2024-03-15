@@ -4,17 +4,16 @@ pwd
 # 配置go版本
 serverName="go-hub-$1"
 commonRepository=$2
-path=$3
-repository=$4
-branch=$5
-
+repository=$3
+branch=$4
+path="./project/"
 # 运行目录
 echo "$serverName"
 echo "$commonRepository"
-echo "$path"
 echo "$repository"
 echo "$branch"
 
+rm -rf "$path"
 mkdir -p "$path"
 cd "$path"
 # stop
@@ -29,9 +28,8 @@ git rev-parse HEAD
 # 启动服务
 pwd &&
 export PATH=${GOROOT}/bin:$PATH &&
-go version
-pwd &&
-echo "version" &&
-go mod tidy &&
-echo "success" &&
-nohup go run cmd/clientserver/main.go -n "$serverName" >run.log 2>&1 &
+go version &&
+go mod tidy
+echo "start server"
+nohup go run cmd/clientserver/main.go -n "$serverName" > run.log 2>&1 &
+echo "success"

@@ -6,6 +6,6 @@ COPY . /server
 RUN go mod tidy
 RUN go build -v -o app
 
-EXPOSE 8088
+EXPOSE 8000
 
 ENTRYPOINT ./app
