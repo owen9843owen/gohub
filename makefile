@@ -4,10 +4,11 @@ build:
 run:
 	docker run -it --rm --name gohub \
 	-d \
+	-p 8000:8000 \
+	-p 9000:9000 \
  	--env branch=owen/swagger \
-    --env repository=https://owen9843owen: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@github.com/bytedance-soft/wallet-server.git \
-    --env server=wallet-server \
-    --env commonRepository=https://owen9843owen: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@github.com/bytedance-soft/go-common.git \
+    --env repository=https://xxx:xxxx@github.com/bytedance-soft/wallet-server.git \
+    --env commonRepository=https://xxx:xxxx@github.com/bytedance-soft/go-common.git \
  	ttl.sh/bd/gohub/v1:1h
 
 delete:

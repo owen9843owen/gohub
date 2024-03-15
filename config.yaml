@@ -1,0 +1,10 @@
+path:
+  "./project"
+main:
+  repository: "https://owen9843owen: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@github.com/bytedance-soft/wallet-server.git"
+  branch: "owen/swagger"
+  project: "wallet-server"
+other:
+  - repository: "https://owen9843owen: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@github.com/bytedance-soft/go-common.git"
+    branch: "owen/swagger"
+    project: "go-common"
